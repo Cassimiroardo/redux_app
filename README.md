@@ -41,4 +41,45 @@ const App = () => {
   );
 };
 ```
-# Utilizaço dos Hooks
+# Utilizando dos Hooks
+```jsx
+import {useSelector, useDispatch} from 'react-redux';
+
+import actions from '../../store/actions/course';
+
+export default function List() {
+  // variavel course recebendo o estado inicial do nosso store de course
+  const course = useSelector((state) => state.course);
+  const dispatch = useDispatch();
+
+  // mandando um module e uma lesson para o state de course para ser atualizado
+  const activeLesson = (module, lesson) => {
+    dispatch({
+      type: actions.ACTIVE_LESSON,
+      module,
+      lesson,
+    });
+  };
+
+  return (
+    <FlatList
+      style={style.list}
+      showsVerticalScrollIndicator={true}
+      data={course.modules}
+      renderItem={({item}) => (
+        <View style={style.container}>
+          <Text style={style.title}>{item.title}</Text>
+          {item.lessons.map((lesson) => (
+            <TouchableOpacity
+              key={lesson.id}
+              onPress={() => activeLesson(item, lesson)}>
+              <Text style={style.text}>{lesson.name}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+    />
+  );
+}
+```
+
