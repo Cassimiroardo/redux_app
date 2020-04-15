@@ -10,7 +10,7 @@ import store from './store';
 const App = () => {
   return (
     <View style={style.content}>
-      {/* <StatusBar barStyle="light-content" backgroundColor="green" /> */}
+      <StatusBar barStyle="light-content" backgroundColor="green" />
       <Provider store={store}>
         <List />
         <Main />
