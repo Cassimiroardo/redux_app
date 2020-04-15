@@ -2,13 +2,15 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
+import actions from '../../store/actions/course';
+
 export default function List() {
   const course = useSelector((state) => state.course);
   const dispatch = useDispatch();
 
   const activeLesson = (module, lesson) => {
     dispatch({
-      type: 'ACTIVE_LESSON',
+      type: actions.ACTIVE_LESSON,
       module,
       lesson,
     });

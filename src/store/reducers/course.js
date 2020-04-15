@@ -37,9 +37,11 @@ const INITIAL_STATE = {
   ],
 };
 
+import actions from '../actions/course';
+
 export default function course(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'ACTIVE_LESSON':
+    case actions.ACTIVE_LESSON:
       return {
         ...state,
         activeLesson: action.lesson,
